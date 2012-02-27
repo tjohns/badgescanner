@@ -8,10 +8,12 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
 public class BaseActivity extends Activity {
     private static final int DIALOG_LEGAL_ID = 0;
@@ -61,6 +63,12 @@ public class BaseActivity extends Activity {
         showDialog(DIALOG_LEGAL_ID);
     }
 
+    public void showToS() {
+        Intent i = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse("http://www.google.com/mobile/tnc.html"));
+        startActivity(i);
+    }
+
     @Override
     protected Dialog onCreateDialog(int id) {
         Dialog dialog;
@@ -69,6 +77,10 @@ public class BaseActivity extends Activity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Legal Notice");
                 builder.setMessage(R.string.legal_text);
+                builder.setNeutralButton("Terms of Service", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        showToS();
+                    }});
                 dialog = builder.create();
                 break;
             default:
