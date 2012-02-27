@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/mwc_business_card_back" >
+
+    <EditText
+        android:id="@+id/job_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginTop="6dp"
+        android:hint="@string/job_title_hint"
+        android:inputType="textCapWords" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/job_title"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:hint="@string/notes_hint"
+        android:inputType="textMultiLine|textCapSentences"
+        android:lines="5" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/notes"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginTop="6dp"
+        android:onClick="flipToFront"
+        android:text="@string/back" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/back"
+        android:layout_toRightOf="@id/back"
+        android:onClick="save"
+        android:text="@string/save" />
+
+</RelativeLayout>

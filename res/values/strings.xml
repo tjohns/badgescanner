@@ -5,6 +5,12 @@
     <string name="report_issue_title">Report Issue</string>
     <string name="show_legal_title">Legal</string>
     <string name="contact_creation_failure">Error: Unable to create contact</string>
+    <string name="job_title_hint">Job Title</string>
+    <string name="notes_hint">Notes</string>
+    <string name="notes">Notes</string>
+    <string name="add_notes">+ Notes</string>
+    <string name="save">Save</string>
+    <string name="back">Back</string>
 
     <!-- Default preference values -->
     <string name="group_default">MWC 2012</string>

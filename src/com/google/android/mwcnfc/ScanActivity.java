@@ -1,8 +1,12 @@
 package com.google.android.mwcnfc;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +24,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.mwcnfc.widget.CardBack;
+import com.google.android.mwcnfc.widget.CardFront;
 
 import java.io.IOException;
 
@@ -39,15 +45,40 @@ public class ScanActivity extends BaseActivity
     private Button mCancel;
     private Badge mBadge;
 
+    private static final String ROTATION_AXIS_PROP = "rotationY";
+    private static final int ROTATION_HALF_DURATION = 100;
+    private static final String FRAGMENTS_ADDED = "FRAGMENTS_ADDED";
+
+    private CardFront mFront;
+    private CardBack mBack;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.scan);
+        setContentView(R.layout.main);
+
+        if (savedInstanceState == null
+                || (!savedInstanceState.containsKey(FRAGMENTS_ADDED) || !savedInstanceState
+                .getBoolean(FRAGMENTS_ADDED, false))) {
+            scanBadge();
+            mFront = new CardFront(new MwcContact(mBadge.getField("firstName"),
+                                                  mBadge.getField("lastName"),
+                                                  null,
+                                                  mBadge.getField("company"),
+                                                  mBadge.getField("email"),
+                                                  mBadge.getField("phone")));
+            mBack = new CardBack();
+
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.add(R.id.root, mFront);
+            ft.add(R.id.root, mBack);
+            ft.commit();
+        }
 
         // Get handles to fields
-        mFirstName = (TextView) findViewById(R.id.firstName);
+        /*mFirstName = (TextView) findViewById(R.id.firstName);
         mLastName = (TextView) findViewById(R.id.lastName);
         mCompany = (TextView) findViewById(R.id.company);
         mJobTitle = (TextView) findViewById(R.id.jobTitle);
@@ -55,9 +86,71 @@ public class ScanActivity extends BaseActivity
         mPhone = (TextView) findViewById(R.id.phone);
         mNotes = (TextView) findViewById(R.id.notes);
         mSave = (Button) findViewById(R.id.save);
-        mCancel = (Button) findViewById(R.id.cancel);
+        mCancel = (Button) findViewById(R.id.cancel);*/
+        // TODO(trevorjohns): Remove
 
-        scanBadge();
+    }
+
+    public void save(View view) {
+        mBadge.setField("jobTitle", ((TextView) findViewById(R.id.job_title)).getText().toString());
+        mBadge.setField("notes", ((TextView) findViewById(R.id.notes)).getText().toString());
+        if (PreferenceManager.getDefaultSharedPreferences(this).getString(Preferences.PREF_ACCOUNT, null) != null) {
+            mBadge.save(this);
+            finish();
+        } else {
+            showDialog(DIALOG_ACCOUNT_CHOOSER_ID);
+            // Dialog will resume save once account is selected
+        }
+    }
+
+    public void flipToBack(View view) {
+        // animate the card transition. We do this in 3 steps:
+        // 1. Rotate out the front fragment
+        // 2. Switch the fragments
+        // 3. Rotate in the back
+        ObjectAnimator anim = ObjectAnimator.ofFloat(mFront.getView(),
+                ROTATION_AXIS_PROP, 0, 90).setDuration(ROTATION_HALF_DURATION);
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+                mFront.getView().setVisibility(View.GONE);
+                mBack.getView().setVisibility(View.VISIBLE);
+
+                // rotate in the new note
+                ObjectAnimator.ofFloat(mBack.getView(), ROTATION_AXIS_PROP,
+                        -90, 0).start();
+            }
+        });
+        anim.start();
+    }
+
+    public void flipToFront(View view) {
+        // animate the card transition. We do this in 3 steps:
+        // 1. Rotate out the back fragment
+        // 2. Switch the fragments
+        // 3. Rotate in the front
+        ObjectAnimator anim = ObjectAnimator.ofFloat(mBack.getView(),
+                ROTATION_AXIS_PROP, 0, -90).setDuration(ROTATION_HALF_DURATION);
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+                mBack.getView().setVisibility(View.GONE);
+                mFront.getView().setVisibility(View.VISIBLE);
+
+                // rotate in the new note
+                ObjectAnimator.ofFloat(mFront.getView(), ROTATION_AXIS_PROP,
+                        90, 0).start();
+            }
+        });
+        anim.start();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(FRAGMENTS_ADDED, true);
     }
 
     private void scanBadge() {
@@ -72,13 +165,6 @@ public class ScanActivity extends BaseActivity
                 mBadge = new Badge();
                 mBadge.readFromTag(tagConnection);
                 tagConnection.close();
-
-                // Update UI
-                mFirstName.setText(mBadge.getField("firstName"));
-                mLastName.setText(mBadge.getField("lastName"));
-                mCompany.setText(mBadge.getField("company"));
-                mEmail.setText(mBadge.getField("email"));
-                mPhone.setText(mBadge.getField("phone"));
             } catch (TagLostException e) {
                 // TODO(trevorjohns): Convert to dialog
                 Toast.makeText(this, "Tag lost", Toast.LENGTH_LONG);
@@ -90,27 +176,6 @@ public class ScanActivity extends BaseActivity
                 finish();
             }
         }
-    }
-
-    public void onSave(View v) {
-        mBadge.setField("firstName", mFirstName.getText().toString());
-        mBadge.setField("lastName", mLastName.getText().toString());
-        mBadge.setField("company", mCompany.getText().toString());
-        mBadge.setField("jobTitle", mJobTitle.getText().toString());
-        mBadge.setField("email", mEmail.getText().toString());
-        mBadge.setField("phone", mPhone.getText().toString());
-        mBadge.setField("notes", mNotes.getText().toString());
-        if (PreferenceManager.getDefaultSharedPreferences(this).getString(Preferences.PREF_ACCOUNT, null) != null) {
-            mBadge.save(this);
-            finish();
-        } else {
-            showDialog(DIALOG_ACCOUNT_CHOOSER_ID);
-            // Dialog will resume save once account is selected
-        }
-    }
-
-    public void onCancel(View v) {
-        finish();
     }
 
     @Override
