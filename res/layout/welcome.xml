@@ -44,7 +44,7 @@
             android:layout_column="0"
             android:layout_gravity="center_horizontal"
             android:layout_row="5"
-            android:text="Hint: You can scan badges even when the Badge Reader app isn't running." android:paddingLeft="20dp" android:paddingRight="20dp" android:gravity="center_vertical|center_horizontal"/>
+            android:text="Tip: You can scan badges even when the Badge Reader app isn't running." android:paddingLeft="20dp" android:paddingRight="20dp" android:gravity="center_vertical|center_horizontal"/>
 
     <Space
             android:layout_width="1dp"
