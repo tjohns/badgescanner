@@ -13,7 +13,9 @@
         android:layout_marginLeft="@dimen/margin_left"
         android:layout_marginTop="6dp"
         android:hint="@string/job_title_hint"
-        android:inputType="textCapWords" >
+        android:inputType="textCapWords"
+        android:singleLine="true"
+    >
 
         <requestFocus />
     </EditText>

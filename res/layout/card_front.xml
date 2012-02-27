@@ -6,21 +6,31 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="@dimen/margin_right"
         android:layout_marginTop="20dp"
-        android:textSize="@dimen/name_size" />
+        android:textSize="@dimen/name_size"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="3"
+        android:singleLine="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:text="John this is a really long name"
+    />
 
     <TextView
         android:id="@+id/company"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignRight="@id/name"
         android:layout_below="@id/name"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:ellipsize="end"
+        android:singleLine="true"
+     />
 
     <TextView
         android:id="@+id/phone"
@@ -30,7 +40,10 @@
         android:layout_below="@id/company"
         android:layout_marginTop="38dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/secondary_text_colour" />
+        android:textColor="@color/secondary_text_colour"
+        android:ellipsize="end"
+        android:singleLine="true"
+    />
 
     <TextView
         android:id="@+id/email"
@@ -39,7 +52,10 @@
         android:layout_alignRight="@id/name"
         android:layout_below="@id/phone"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/secondary_text_colour" />
+        android:textColor="@color/secondary_text_colour"
+        android:ellipsize="end"
+        android:singleLine="true"
+    />
 
     <Button
         android:id="@+id/add_notes"
