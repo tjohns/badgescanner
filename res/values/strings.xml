@@ -4,6 +4,7 @@
     <string name="preferences_title">Preferences</string>
     <string name="report_issue_title">Report Issue</string>
     <string name="show_legal_title">Legal</string>
+    <string name="contact_saved">Contact saved</string>
     <string name="contact_creation_failure">Error: Unable to create contact</string>
     <string name="job_title_hint">Job Title</string>
     <string name="notes_hint">Notes</string>

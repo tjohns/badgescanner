@@ -63,10 +63,19 @@ public class Badge {
     }
 
     public void save(Context ctx) {
+        // Read values into Contacts DB
         ContentValues values = new ContentValues();
         ContentResolver cr = ctx.getContentResolver();
         long targetGroupId = prepareTargetGroupId(ctx);
         createContact(ctx, targetGroupId);
+
+        // Display confirmation
+        Context context = ctx;
+        CharSequence text = ctx.getText(R.string.contact_saved);
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
     
     private long prepareTargetGroupId(Context ctx) {
