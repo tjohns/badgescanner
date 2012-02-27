@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MWC Badge Reader</string>
+    <string name="preferences_title">Preferences</string>
+    <string name="report_issue_title">Report Issue</string>
+    <string name="show_legal_title">Legal</string>
+    <string name="contact_creation_failure">Error: Unable to create contact</string>
+
+    <!-- Default preference values -->
+    <string name="group_default">MWC 2012</string>
+    
+    <!-- Legal text -->
+    <string name="legal_text">Copyright 2012 Google Inc. All Rights Reserved.
+\n
+\nThis application uses Google Analytics for Android to record anonymous usage statistics.
+\n
+\n"Project Icons" © 2012 Mihaiciuc Bogdan, used under a Creative Commons Attribution license: http://creativecommons.org/licenses/by/3.0/</string>
+
+</resources>

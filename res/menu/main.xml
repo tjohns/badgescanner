@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/preferences"
+          android:icon="@android:drawable/ic_menu_preferences"
+          android:title="@string/preferences_title"
+          android:showAsAction="ifRoom"/>
+    <item android:id="@+id/report_issue"
+          android:title="@string/report_issue_title"
+          android:showAsAction="never"/>
+    <item android:id="@+id/show_legal"
+          android:title="@string/show_legal_title"
+          android:showAsAction="never"/>
+
+</menu>

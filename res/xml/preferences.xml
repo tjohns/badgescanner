@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+            android:title="Sync Settings">
+        <ListPreference
+            android:key="account"
+            android:title="Google Account"
+            android:summary=""
+            android:dialogTitle="Select Account" />
+        <EditTextPreference
+                android:key="group"
+                android:title="Contact Group Name"
+                android:summary="Group will be created if needed"
+                android:dialogTitle="Enter Group Name"
+                android:defaultValue="@string/group_default" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
