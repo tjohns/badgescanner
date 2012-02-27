@@ -18,8 +18,6 @@
     <!-- Legal text -->
     <string name="legal_text">Copyright 2012 Google Inc. All Rights Reserved.
 \n
-\nThis application uses Google Analytics for Android to record anonymous usage statistics.
-\n
 \n"Project Icons" © 2012 Mihaiciuc Bogdan, used under a Creative Commons Attribution license: http://creativecommons.org/licenses/by/3.0/</string>
 
 </resources>

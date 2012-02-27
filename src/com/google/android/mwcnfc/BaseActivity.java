@@ -13,9 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.google.android.apps.analytics.easytracking.TrackedActivity;
-
-public class BaseActivity extends TrackedActivity {
+public class BaseActivity extends Activity {
     private static final int DIALOG_LEGAL_ID = 0;
 
     @Override
