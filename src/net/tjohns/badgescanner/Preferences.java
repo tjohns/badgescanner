@@ -23,7 +23,7 @@ import java.util.List;
 
 public class Preferences extends PreferenceActivity {
 
-    public final static String TAG = "MwcNfc";
+    public final static String TAG = "BadgeScanner";
     public final static String PREF_ACCOUNT = "account";
     public final static String PREF_GROUP = "group";
 

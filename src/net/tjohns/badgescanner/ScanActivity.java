@@ -40,7 +40,7 @@ import java.io.IOException;
 
 public class ScanActivity extends BaseActivity
 {
-    private static final String TAG = "MwcNfc";
+    private static final String TAG = "BadgeScanner";
     private static final int DIALOG_ACCOUNT_CHOOSER_ID = 1;
 
     private TextView mFirstName;
