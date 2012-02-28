@@ -46,7 +46,7 @@ public class BaseActivity extends Activity {
             case R.id.report_issue:
                 reportIssue();
                 return true;
-            case R.id.show_legal:
+            case R.id.show_about:
                 showLegal();
                 return true;
             default:
@@ -72,9 +72,9 @@ public class BaseActivity extends Activity {
         showDialog(DIALOG_LEGAL_ID);
     }
 
-    public void showToS() {
+    public void showProjectSite() {
         Intent i = new Intent(android.content.Intent.ACTION_VIEW,
-                Uri.parse("http://www.google.com/mobile/tnc.html"));
+                Uri.parse("http://code.google.com/p/badgescanner/"));
         startActivity(i);
     }
 
@@ -84,11 +84,11 @@ public class BaseActivity extends Activity {
         switch(id) {
             case DIALOG_LEGAL_ID:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Legal Notice");
+                builder.setTitle(getString(R.string.show_about_title));
                 builder.setMessage(R.string.legal_text);
-                builder.setNeutralButton("Terms of Service", new DialogInterface.OnClickListener() {
+                builder.setNeutralButton(getString(R.string.project_website_button), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        showToS();
+                        showProjectSite();
                     }});
                 dialog = builder.create();
                 break;
