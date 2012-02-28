@@ -61,8 +61,8 @@ public class BaseActivity extends Activity {
 
     public void reportIssue() {
         Intent i = new Intent(android.content.Intent.ACTION_SEND);
-        i.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"trevorjohns@google.com"});
-        i.putExtra(android.content.Intent.EXTRA_SUBJECT, "[MWC NFC] Issue Report");
+        i.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"badgescanner-bugs@tjohns.net"});
+        i.putExtra(android.content.Intent.EXTRA_SUBJECT, "[BadgeScanner] Issue Report");
         i.setType("text/plain");
         i.putExtra(android.content.Intent.EXTRA_TEXT, "Summary:\n\nSteps to reproduce:\n\nAdditional information:\n");
         startActivity(Intent.createChooser(i, "Select Mail Client"));
