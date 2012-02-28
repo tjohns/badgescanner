@@ -18,13 +18,6 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
 
-/**
- * Created by IntelliJ IDEA.
- * User: trevorjohns
- * Date: 2/26/12
- * Time: 8:34 PM
- * To change this template use File | Settings | File Templates.
- */
 public class Accounts {
     public static final String ACCOUNT_TYPE_GOOGLE = "com.google";
     
