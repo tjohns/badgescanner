@@ -1,0 +1,6 @@
+.DS_Store
+out/
+gen/
+local.properties
+build.xml
+bin/
