@@ -12,23 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.android.mwcnfc;
+package net.tjohns.badgescanner;
 
-import java.io.IOException;
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.content.Context;
 
 /**
  * Created by IntelliJ IDEA.
  * User: trevorjohns
  * Date: 2/26/12
- * Time: 1:22 PM
+ * Time: 8:34 PM
  * To change this template use File | Settings | File Templates.
  */
-public interface Field {
-
-    public String getValue();
-
-    public void setValue(String value);
-
-    public void readFromTag(NfcConnection nfcConnection) throws IOException;
-
+public class Accounts {
+    public static final String ACCOUNT_TYPE_GOOGLE = "com.google";
+    
+    public static String[] GetAccounts(Context context) {
+        Account accounts[] = AccountManager.get(context).getAccountsByType(ACCOUNT_TYPE_GOOGLE);
+        String accountEntries[] = new String[accounts.length];
+        for (int i = 0; i < accounts.length; i++) {
+            accountEntries[i] = accounts[i].name;
+        }
+        return accountEntries;
+    }
 }

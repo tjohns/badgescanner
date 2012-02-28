@@ -12,12 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.android.mwcnfc;
+package net.tjohns.badgescanner;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
@@ -30,16 +29,12 @@ import android.nfc.TagLostException;
 import android.nfc.tech.MifareClassic;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.mwcnfc.widget.CardBack;
-import com.google.android.mwcnfc.widget.CardFront;
+import net.tjohns.badgescanner.widget.CardBack;
+import net.tjohns.badgescanner.widget.CardFront;
 
 import java.io.IOException;
 

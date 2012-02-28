@@ -12,19 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.android.mwcnfc;
+package net.tjohns.badgescanner;
 
-import android.os.Bundle;
+import java.io.IOException;
 
-public class MainActivity extends BaseActivity
-{
-    /** Called when the activity is first created. */
+public class NotesField implements Field {
+    private String mValue;
+    
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome);
-        //NfcAdapter a = NfcAdapter.getDefaultAdapter(this);
-        //a.enableForegroundDispatch(ScanActivity.class, new PendingIntent);
+    public String getValue() {
+        return mValue;
+    }
+
+    @Override
+    public void setValue(String value) {
+        mValue = value;
+    }
+
+    @Override
+    public void readFromTag(NfcConnection nfcConnection) throws IOException {
+        // This is a notes field, it does not exist on tags.
+        return;
     }
 }

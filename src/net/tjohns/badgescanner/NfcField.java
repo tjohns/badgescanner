@@ -12,11 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.android.mwcnfc;
-
-import android.nfc.Tag;
-import android.nfc.tech.MifareClassic;
-import android.util.Log;
+package net.tjohns.badgescanner;
 
 import java.io.IOException;
 

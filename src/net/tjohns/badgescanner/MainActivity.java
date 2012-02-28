@@ -12,25 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.android.mwcnfc;
+package net.tjohns.badgescanner;
 
-import java.lang.String;public class MwcContact {
+import android.os.Bundle;
 
-	public String firstName;
-	public String lastName;
-	public String jobTitle;
-	public String company;
-	public String email;
-	public String phone;
-
-	public MwcContact(String firstName, String lastName, String jobTitle,
-			String company, String email, String phone) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.jobTitle = jobTitle;
-		this.company = company;
-		this.email = email;
-		this.phone = phone;
-	}
-
+public class MainActivity extends BaseActivity
+{
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.welcome);
+        //NfcAdapter a = NfcAdapter.getDefaultAdapter(this);
+        //a.enableForegroundDispatch(ScanActivity.class, new PendingIntent);
+    }
 }

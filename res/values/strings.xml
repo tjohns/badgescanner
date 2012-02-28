@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MWC Badge Reader</string>
+    <string name="app_name">Badge Scanner</string>
     <string name="preferences_title">Preferences</string>
     <string name="report_issue_title">Report Issue</string>
     <string name="show_legal_title">Legal</string>

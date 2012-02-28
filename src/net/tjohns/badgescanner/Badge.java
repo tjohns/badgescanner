@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.android.mwcnfc;
+package net.tjohns.badgescanner;
 
 import android.content.*;
 import android.database.Cursor;
@@ -21,7 +21,6 @@ import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
-import junit.framework.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;

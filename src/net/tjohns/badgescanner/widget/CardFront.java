@@ -12,31 +12,41 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.android.mwcnfc.widget;
+package net.tjohns.badgescanner.widget;
 
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.google.android.mwcnfc.R;
+import net.tjohns.badgescanner.MwcContact;
+import net.tjohns.badgescanner.R;
 
-public class CardBack extends Fragment {
+public class CardFront extends Fragment {
 
-	public CardBack() {
+	private MwcContact mContact;
 
+	public CardFront() {
+
+	}
+
+	public CardFront(MwcContact contact) {
+		mContact = contact;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.card_back, container, false);
-		
-		
-		// by default the card back is not visible, set it up so that it's ready to animate in
-		v.setRotationY(-90);
-		v.setVisibility(View.GONE);
+		View v = inflater.inflate(R.layout.card_front, container, false);
+		if (mContact != null) {
+			((TextView) v.findViewById(R.id.name)).setText(mContact.firstName
+					+ " " + mContact.lastName);
+			((TextView) v.findViewById(R.id.company)).setText(mContact.company);
+			((TextView) v.findViewById(R.id.phone)).setText(mContact.phone);
+			((TextView) v.findViewById(R.id.email)).setText(mContact.email);
+		}
 		return v;
 	}
 

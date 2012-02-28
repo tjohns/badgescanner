@@ -12,26 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.android.mwcnfc;
+package net.tjohns.badgescanner;
 
-import java.io.IOException;
+import java.lang.String;public class MwcContact {
 
-public class NotesField implements Field {
-    private String mValue;
-    
-    @Override
-    public String getValue() {
-        return mValue;
-    }
+	public String firstName;
+	public String lastName;
+	public String jobTitle;
+	public String company;
+	public String email;
+	public String phone;
 
-    @Override
-    public void setValue(String value) {
-        mValue = value;
-    }
+	public MwcContact(String firstName, String lastName, String jobTitle,
+			String company, String email, String phone) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.jobTitle = jobTitle;
+		this.company = company;
+		this.email = email;
+		this.phone = phone;
+	}
 
-    @Override
-    public void readFromTag(NfcConnection nfcConnection) throws IOException {
-        // This is a notes field, it does not exist on tags.
-        return;
-    }
 }
