@@ -6,6 +6,7 @@
     <string name="show_about_title">About</string>
     <string name="project_website_button">Project Website</string>
     <string name="contact_saved">Contact saved</string>
+    <string name="error_reading_badge">Error: Unable to read badge</string>
     <string name="contact_creation_failure">Error: Unable to create contact</string>
     <string name="job_title_hint">Job Title</string>
     <string name="notes_hint">Notes</string>

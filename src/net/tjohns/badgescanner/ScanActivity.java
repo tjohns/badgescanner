@@ -31,6 +31,7 @@ import android.nfc.tech.MifareClassic;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -75,6 +76,16 @@ public class ScanActivity extends BaseActivity
                 || (!savedInstanceState.containsKey(FRAGMENTS_ADDED) || !savedInstanceState
                 .getBoolean(FRAGMENTS_ADDED, false))) {
             scanBadge();
+            if (mBadge == null) {
+                Log.e(TAG, "Badge is null");
+                CharSequence text = getText(R.string.error_reading_badge);
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(this, text, duration);
+                toast.show();
+
+                finish();
+            }
             mFront = new CardFront(new MwcContact(mBadge.getField("firstName"),
                                                   mBadge.getField("lastName"),
                                                   null,
@@ -170,7 +181,7 @@ public class ScanActivity extends BaseActivity
     private void scanBadge() {
     	Vibrator vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
     	vibrator.vibrate(VIBRATION_DURATION);
-    	
+
         Intent intent = getIntent();
 
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(getIntent().getAction())) {
