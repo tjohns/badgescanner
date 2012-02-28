@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/mwc_business_card_front_droid"
     android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    >
+    android:paddingRight="10dp" >
 
     <TextView
         android:id="@+id/name"
@@ -15,14 +14,13 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="@dimen/margin_right"
         android:layout_marginTop="20dp"
-        android:textSize="@dimen/name_size"
         android:ellipsize="marquee"
-        android:marqueeRepeatLimit="3"
-        android:singleLine="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="3"
+        android:singleLine="true"
         android:text="John this is a really long name"
-    />
+        android:textSize="@dimen/name_size" />
 
     <TextView
         android:id="@+id/company"
@@ -30,10 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@id/name"
         android:layout_below="@id/name"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:ellipsize="end"
         android:singleLine="true"
-     />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/phone"
@@ -42,11 +39,10 @@
         android:layout_alignRight="@id/name"
         android:layout_below="@id/company"
         android:layout_marginTop="38dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/secondary_text_colour"
         android:ellipsize="end"
         android:singleLine="true"
-    />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/secondary_text_colour" />
 
     <TextView
         android:id="@+id/email"
@@ -54,13 +50,12 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@id/name"
         android:layout_below="@id/phone"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/secondary_text_colour"
         android:ellipsize="end"
         android:singleLine="true"
-    />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/secondary_text_colour" />
 
-    <Button
+    <ImageButton
         android:id="@+id/add_notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,15 +64,37 @@
         android:layout_marginLeft="@dimen/margin_left"
         android:layout_marginTop="6dp"
         android:onClick="flipToBack"
-        android:text="@string/add_notes" />
-
-    <Button
+        android:src="@drawable/ic_action_edit"
+        android:contentDescription="@string/add_notes" />
+    
+    <!--<ImageButton
+        android:id="@+id/take_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/add_notes"
+        android:layout_toRightOf="@id/add_notes"
+        android:onClick="takePhoto"
+        android:src="@drawable/ic_action_photo"
+        android:contentDescription="@string/add_photo" />
+    
+    <ImageView android:id="@+id/photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/add_notes"
+        android:layout_toRightOf="@id/take_photo"
+        android:onClick="takePhoto"
+        android:src="@drawable/ic_action_photo"
+        android:contentDescription="@string/add_photo"
+        android:visibility="gone" />-->
+    
+    <ImageButton
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/add_notes"
         android:layout_toRightOf="@id/add_notes"
         android:onClick="save"
-        android:text="@string/save" />
+        android:src="@drawable/ic_action_done"
+        android:contentDescription="@string/save" />
 
 </RelativeLayout>

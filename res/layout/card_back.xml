@@ -32,7 +32,7 @@
         android:inputType="textMultiLine|textCapSentences"
         android:lines="5" />
 
-    <Button
+    <ImageButton
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,15 +41,17 @@
         android:layout_marginLeft="@dimen/margin_left"
         android:layout_marginTop="6dp"
         android:onClick="flipToFront"
-        android:text="@string/back" />
+        android:src="@drawable/ic_action_back"
+        android:contentDescription="@string/back" />
 
-    <Button
+    <ImageButton
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/back"
         android:layout_toRightOf="@id/back"
         android:onClick="save"
-        android:text="@string/save" />
+        android:src="@drawable/ic_action_done"
+        android:contentDescription="@string/save" />
 
-</RelativeLayout>
+</RelativeLayout>	

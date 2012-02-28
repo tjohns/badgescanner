@@ -105,6 +105,8 @@ public class ScanActivity extends BaseActivity
         mBadge.setField("notes", ((TextView) findViewById(R.id.notes)).getText().toString());
         if (PreferenceManager.getDefaultSharedPreferences(this).getString(Preferences.PREF_ACCOUNT, null) != null) {
             mBadge.save(this);
+            String successMessage = getResources().getString(R.string.contact_created, mBadge.getField("firstName"), mBadge.getField("lastName"));
+            Toast.makeText(getApplicationContext(), successMessage, Toast.LENGTH_SHORT);
             finish();
         } else {
             showDialog(DIALOG_ACCOUNT_CHOOSER_ID);
@@ -215,5 +217,9 @@ public class ScanActivity extends BaseActivity
                 super.onCreateDialog(id);
         }
         return dialog;
+    }
+    
+    public void takePhoto(View v) {
+    	
     }
 }

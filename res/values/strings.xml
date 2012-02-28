@@ -13,6 +13,8 @@
     <string name="add_notes">+ Notes</string>
     <string name="save">Save</string>
     <string name="back">Back</string>
+    <string name="add_photo">Add a photo</string>
+    <string name="contact_created">%1$s %2$s added to contacts</string>
 
     <!-- Default preference values -->
     <string name="group_default">MWC 2012</string>
