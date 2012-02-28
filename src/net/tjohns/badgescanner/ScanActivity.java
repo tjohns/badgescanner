@@ -20,6 +20,7 @@ import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,6 +29,7 @@ import android.nfc.Tag;
 import android.nfc.TagLostException;
 import android.nfc.tech.MifareClassic;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +42,8 @@ import java.io.IOException;
 
 public class ScanActivity extends BaseActivity
 {
-    private static final String TAG = "BadgeScanner";
+    private static final int VIBRATION_DURATION = 200;
+	private static final String TAG = "BadgeScanner";
     private static final int DIALOG_ACCOUNT_CHOOSER_ID = 1;
 
     private TextView mFirstName;
@@ -165,6 +168,9 @@ public class ScanActivity extends BaseActivity
     }
 
     private void scanBadge() {
+    	Vibrator vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+    	vibrator.vibrate(VIBRATION_DURATION);
+    	
         Intent intent = getIntent();
 
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(getIntent().getAction())) {
