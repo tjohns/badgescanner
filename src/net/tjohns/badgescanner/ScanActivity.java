@@ -19,7 +19,9 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentTransaction;
+import android.os.Build;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -95,7 +97,7 @@ public class ScanActivity extends BaseActivity
                                                   mBadge.getField("phone")));
             mBack = new CardBack();
 
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.root, mFront);
             ft.add(R.id.root, mBack);
             ft.commit();
@@ -134,21 +136,27 @@ public class ScanActivity extends BaseActivity
         // 1. Rotate out the front fragment
         // 2. Switch the fragments
         // 3. Rotate in the back
-        ObjectAnimator anim = ObjectAnimator.ofFloat(mFront.getView(),
-                ROTATION_AXIS_PROP, 0, 90).setDuration(ROTATION_HALF_DURATION);
-        anim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
+        if (Build.VERSION.SDK_INT > 11) {
+            ObjectAnimator anim = ObjectAnimator.ofFloat(findViewById(R.id.card_front),
+                    ROTATION_AXIS_PROP, 0, 90).setDuration(ROTATION_HALF_DURATION);
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
 
-                mFront.getView().setVisibility(View.GONE);
-                mBack.getView().setVisibility(View.VISIBLE);
+                    findViewById(R.id.card_front).setVisibility(View.GONE);
+                    findViewById(R.id.card_back).setVisibility(View.VISIBLE);
 
-                // rotate in the new note
-                ObjectAnimator.ofFloat(mBack.getView(), ROTATION_AXIS_PROP,
-                        -90, 0).start();
-            }
-        });
-        anim.start();
+                    // rotate in the new note
+                    ObjectAnimator.ofFloat(findViewById(R.id.card_back), ROTATION_AXIS_PROP,
+                            -90, 0).start();
+                }
+            });
+            anim.start();
+        } else {
+            // Running on Gingerbread, animation class not available
+            findViewById(R.id.card_front).setVisibility(View.GONE);
+            findViewById(R.id.card_back).setVisibility(View.VISIBLE);
+        }
     }
 
     public void flipToFront(View view) {
@@ -156,21 +164,27 @@ public class ScanActivity extends BaseActivity
         // 1. Rotate out the back fragment
         // 2. Switch the fragments
         // 3. Rotate in the front
-        ObjectAnimator anim = ObjectAnimator.ofFloat(mBack.getView(),
-                ROTATION_AXIS_PROP, 0, -90).setDuration(ROTATION_HALF_DURATION);
-        anim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
+        if (Build.VERSION.SDK_INT > 11) {
+            ObjectAnimator anim = ObjectAnimator.ofFloat(findViewById(R.id.card_back),
+                    ROTATION_AXIS_PROP, 0, -90).setDuration(ROTATION_HALF_DURATION);
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
 
-                mBack.getView().setVisibility(View.GONE);
-                mFront.getView().setVisibility(View.VISIBLE);
+                    findViewById(R.id.card_back).setVisibility(View.GONE);
+                    findViewById(R.id.card_front).setVisibility(View.VISIBLE);
 
-                // rotate in the new note
-                ObjectAnimator.ofFloat(mFront.getView(), ROTATION_AXIS_PROP,
-                        90, 0).start();
-            }
-        });
-        anim.start();
+                    // rotate in the new note
+                    ObjectAnimator.ofFloat(findViewById(R.id.card_front), ROTATION_AXIS_PROP,
+                            90, 0).start();
+                }
+            });
+            anim.start();
+        } else {
+            // Running on Gingerbread, animation class not available
+            findViewById(R.id.card_back).setVisibility(View.GONE);
+            findViewById(R.id.card_front).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

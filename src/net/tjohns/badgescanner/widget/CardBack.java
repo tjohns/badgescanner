@@ -14,8 +14,9 @@
 
 package net.tjohns.badgescanner.widget;
 
-import android.app.Fragment;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,9 +34,10 @@ public class CardBack extends Fragment {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.card_back, container, false);
 		
-		
 		// by default the card back is not visible, set it up so that it's ready to animate in
-		v.setRotationY(-90);
+		if (Build.VERSION.SDK_INT > 11) {
+            v.setRotationY(-90);
+        }
 		v.setVisibility(View.GONE);
 		return v;
 	}

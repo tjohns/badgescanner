@@ -20,11 +20,12 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
     private static final int DIALOG_LEGAL_ID = 0;
 
     @Override

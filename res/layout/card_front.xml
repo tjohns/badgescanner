@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@drawable/mwc_business_card_front_droid"
     android:paddingLeft="10dp"
-    android:paddingRight="10dp" >
+    android:paddingRight="10dp"
+    android:id="@+id/card_front" >
 
     <TextView
         android:id="@+id/name"

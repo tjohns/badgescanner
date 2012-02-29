@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/mwc_business_card_back" >
+    android:background="@drawable/mwc_business_card_back"
+    android:id="@+id/card_back" >
 
     <EditText
         android:id="@+id/job_title"
