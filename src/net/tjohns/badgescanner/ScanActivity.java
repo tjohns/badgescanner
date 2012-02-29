@@ -85,6 +85,7 @@ public class ScanActivity extends BaseActivity
                 toast.show();
 
                 finish();
+                return;
             }
             mFront = new CardFront(new MwcContact(mBadge.getField("firstName"),
                                                   mBadge.getField("lastName"),
