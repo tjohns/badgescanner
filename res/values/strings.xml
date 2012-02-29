@@ -22,9 +22,7 @@
     
     
     <!-- Long text -->
-    <string name="welcome_tip">Tip: You can scan badges even when the Badge Reader app isn\'t running.
-\n
-\nAlso, share this app with your friends using Android Beam by tapping phones.</string>
+    <string name="welcome_tip">Tip: You can scan badges even when the Badge Reader app isn\'t running.</string>
 
     <string name="legal_text">Copyright 2012 Google Inc.
 \n

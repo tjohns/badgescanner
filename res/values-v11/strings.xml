@@ -1,0 +1,5 @@
+<resources>
+    <string name="welcome_tip">Tip: You can scan badges even when the Badge Reader app isn\'t running.
+\n
+\nAlso, share this app with your friends using Android Beam by tapping phones.</string>
+</resources>
