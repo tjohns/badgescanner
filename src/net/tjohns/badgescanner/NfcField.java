@@ -15,6 +15,7 @@
 package net.tjohns.badgescanner;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 /**
  * Created by IntelliJ IDEA.
@@ -35,12 +36,10 @@ public class NfcField implements Field {
         mBlockCount = blockCount;
     }
 
-    @Override
     public String getValue() {
         return mValue;
     }
 
-    @Override
     public void setValue(String value) {
         mValue = value;
     }
@@ -63,8 +62,8 @@ public class NfcField implements Field {
             }
         }
 
-        // Convert to a string. We're assuming this is UTF-8. Trailing characters are used for
+        // Convert to a string. Trailing characters are used for
         // padding, so those are removed.
-        mValue = new String(data, 0, dataLen).trim();
+        mValue = new String(data, 0, dataLen, Charset.forName("ISO-8859-15")).trim();
     }
 }
