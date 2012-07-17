@@ -19,17 +19,14 @@ import java.io.IOException;
 public class NotesField implements Field {
     private String mValue;
     
-    @Override
     public String getValue() {
         return mValue;
     }
 
-    @Override
     public void setValue(String value) {
         mValue = value;
     }
 
-    @Override
     public void readFromTag(NfcConnection nfcConnection) throws IOException {
         // This is a notes field, it does not exist on tags.
         return;
